@@ -31,7 +31,7 @@ HTML_PAGE = '''
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог деталей КОМПАС-3D</title>
+    <title>Каталог файлов</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -121,12 +121,12 @@ HTML_PAGE = '''
 <body>
 <div class="container">
     <div class="header">
-        <h1>📁 Каталог деталей КОМПАС-3D</h1>
+        <h1>Каталог файлов</h1>
         <p></p>
     </div>
 
     <div class="card">
-        <h2>🔍 Найти деталь по коду</h2>
+        <h2>🔍 Найти</h2>
         <div class="search-row">
             <input type="text" id="searchCode" placeholder="Введите кодовое слово" autocomplete="off">
             <button id="searchBtn">📥 Скачать</button>
@@ -135,7 +135,7 @@ HTML_PAGE = '''
     </div>
 
     <div class="card">
-        <h2>⬆️ Загрузить свою деталь</h2>
+        <h2>⬆️ Загрузить</h2>
         <div class="form-group">
             <label>Кодовое слово (придумайте уникальное) *</label>
             <input type="text" id="newCode" placeholder="например: шестерня_01">
@@ -150,7 +150,7 @@ HTML_PAGE = '''
             <input type="file" id="fileInput" style="display: none;">
             <div id="fileNameDisplay" class="file-name"></div>
         </div>
-        <button id="uploadBtn">✅ Загрузить в общее хранилище</button>
+        <button id="uploadBtn">✅ Загрузить</button>
         <div id="uploadMessage" class="message"></div>
     </div>
 </div>
@@ -349,7 +349,7 @@ def api_upload():
 def api_download(code):
     catalog = load_catalog()
     if code not in catalog:
-        return jsonify({'error': 'Деталь не найдена'}), 404
+        return jsonify({'error': 'Файл не найдена'}), 404
 
     info = catalog[code]
     file_data_b64 = info.get('fileData')
