@@ -138,7 +138,7 @@ HTML_PAGE = '''
         <h2>⬆️ Загрузить</h2>
         <div class="form-group">
             <label>Кодовое слово (придумайте уникальное) *</label>
-            <input type="text" id="newCode" placeholder="например: шестерня_01">
+            <input type="text" id="newCode" placeholder="например: мой_файл">
             <div class="hint-text">Только буквы (рус/eng), цифры, _ и -</div>
         </div>
         <div class="form-group">
