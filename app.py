@@ -142,15 +142,15 @@ HTML_PAGE = '''
             <div class="hint-text">Только буквы (рус/eng), цифры, _ и -</div>
         </div>
         <div class="form-group">
-            <label>Название детали (необязательно)</label>
-            <input type="text" id="newName" placeholder="например: Шестерня коническая">
+            <label>Название(необязательно)</label>
+            <input type="text" id="newName" placeholder="например: Мой файл">
         </div>
         <div class="upload-area" id="uploadArea">
             📂 Нажмите или перетащите файл (макс. 15 МБ)
             <input type="file" id="fileInput" style="display: none;">
             <div id="fileNameDisplay" class="file-name"></div>
         </div>
-        <button id="uploadBtn">✅ Загрузить</button>
+        <button id="uploadBtn">✅ Загрузить файл</button>
         <div id="uploadMessage" class="message"></div>
     </div>
 </div>
@@ -268,7 +268,7 @@ HTML_PAGE = '''
 
         try {
             await uploadDetail(code, name, selectedFile);
-            showMessage(uploadMsg, `✅ Деталь "${code}" загружена!`, 'success');
+            showMessage(uploadMsg, `✅ Файл "${code}" загружен!`, 'success');
             newCodeInput.value = '';
             newNameInput.value = '';
             selectedFile = null;
@@ -278,7 +278,7 @@ HTML_PAGE = '''
             showMessage(uploadMsg, `❌ ${err.message}`, 'error');
         } finally {
             uploadBtn.disabled = false;
-            uploadBtn.innerHTML = '✅ Загрузить в общее хранилище';
+            uploadBtn.innerHTML = '✅ Загрузить';
         }
     });
 
@@ -349,7 +349,7 @@ def api_upload():
 def api_download(code):
     catalog = load_catalog()
     if code not in catalog:
-        return jsonify({'error': 'Файл не найдена'}), 404
+        return jsonify({'error': 'Файл не найден'}), 404
 
     info = catalog[code]
     file_data_b64 = info.get('fileData')
